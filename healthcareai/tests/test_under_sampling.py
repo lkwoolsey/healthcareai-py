@@ -14,6 +14,7 @@ class TestUnderSampling(unittest.TestCase):
                   [1.4, 3.5, 'one'],
                   [1.4, 3.5, 'two'],
                   [1.7, 3.6, 'one'],
+                  [1.2, 3.5, 'three'],            
                   [1.7, 3.6, 'two']  ])
         self.df.columns = ['x1','x2','y']
         
