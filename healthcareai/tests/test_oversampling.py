@@ -26,7 +26,7 @@ class TestOverSampling(unittest.TestCase):
         oo.over_sampling()
         self.assertEqual(expected_rows, oo.dataframe.shape[0])
 
-    def test_returns_correct_type(self):
+    def test_dataframe_type_does_not_change(self):
         oo = hc.DevelopSupervisedModel(dataframe = self.df,
                                        model_type = 'classification',
                                        predicted_column = 'y')
