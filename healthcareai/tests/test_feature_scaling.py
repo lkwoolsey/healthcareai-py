@@ -83,12 +83,10 @@ class TestFeatureScaling(unittest.TestCase):
                                        predicted_column = 'y')
         oo.train_test_split()
         oo.feature_scaling(['x1','x2'])
-        if( abs(oo.X_train.x1.mean()) < 0.01 and
-            abs(oo.X_train.x2.mean()) < 0.01 ):
-            test = True
-        else:
-            test = False
-        self.assertEqual( test, True )
+        mean_x1 = oo.X_train.x1.mean() 
+        mean_x2 = oo.X_train.x2.mean()
+        self.assertTrue(abs(mean_x1) < 0.01)
+        self.assertTrue(abs(mean_x2) < 0.01)
 
     def test_X_train_unit_variance(self):
         oo = hc.DevelopSupervisedModel(dataframe = self.df,
@@ -96,12 +94,10 @@ class TestFeatureScaling(unittest.TestCase):
                                        predicted_column = 'y')
         oo.train_test_split()
         oo.feature_scaling(['x1','x2'])
-        if( abs(oo.X_train.x1.std() - 1) < 0.5 and
-            abs(oo.X_train.x2.std() - 1) < 0.5 ):
-            test = True
-        else:
-            test = False
-        self.assertEqual( test, True )
+        std_x1 = oo.X_train.x1.std()
+        std_x2 = oo.X_train.x2.std()
+        self.assertTrue(abs(std_x1 - 1) < 0.5)
+        self.assertTrue(abs(std_x2 - 1) < 0.5)
         
     def tearDown(self):
         del self.df
